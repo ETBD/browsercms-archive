@@ -8,6 +8,8 @@ module Cms
     helper_method :public_groups
     helper_method :cms_groups
 
+    cache_sweeper Cms::SitemapSweeper
+
     def index
       redirect_to cms.sitemap_path
     end
