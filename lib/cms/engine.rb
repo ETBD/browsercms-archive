@@ -80,6 +80,7 @@ module Cms
       ActiveSupport::Dependencies.autoload_paths += %W( #{self.root}/app/controllers #{self.root}/app/models #{self.root}/app/portlets)
       ActiveSupport::Dependencies.autoload_paths += %W( #{Rails.root}/app/portlets )
       ActiveSupport::Dependencies.autoload_paths += %W( #{Rails.root}/app/portlets/helpers )
+      ActiveSupport::Dependencies.autoload_paths += %W( #{Rails.root}/app/sweepers )
       ActionController::Base.append_view_path DynamicView.base_path
       ActionController::Base.append_view_path %W( #{self.root}/app/views)
       ActionView::Base.default_form_builder = Cms::FormBuilder
