@@ -13,7 +13,7 @@ module Cms
     end
 
     def handle_not_found_on_page(exception)
-      logger.warn "Resource not found: Returning the 404 page."
+      logger.warn "Resource not found: Returning the 404 page. #{exception.inspect}"
       handle_error_with_cms_page(Cms::ErrorPages::NOT_FOUND_PATH, exception, :not_found)
     end
 
