@@ -1,5 +1,4 @@
 <%= content_for :html_head do %>
-  <meta name="generator" content="BrowserCMS <%= Cms.version %>"/>
   <% if is_editing_page?(current_page) %>
     <%= javascript_include_tag 'cms/core_library' %>
   <% end %>
