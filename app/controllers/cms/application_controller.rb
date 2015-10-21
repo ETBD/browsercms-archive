@@ -14,15 +14,15 @@ class ApplicationController < ::ApplicationController
   helper Cms::RenderingHelper
   helper Cms::UiElementsHelper
 
-    # --- Add Params to ActiveSupport::Notification so we can easily log it ---
+  # --- Add Params to ActiveSupport::Notification so we can easily log it ---
 
-    def append_info_to_payload(payload)
-      super
-      payload[:page_id] = @page.id rescue nil
-      payload[:page_version] = @page.version rescue nil
-      payload[:user_id] = current_user.id rescue nil
-      payload[:user_uid] = current_user.uid rescue nil
-    end
+  def append_info_to_payload(payload)
+    super
+    payload[:page_id] = @page.id rescue nil
+    payload[:page_version] = @page.version rescue nil
+    payload[:user_id] = current_user.id rescue nil
+    payload[:user_uid] = current_user.uid rescue nil
+  end
 
   protected
     def escape_javascript(javascript)
