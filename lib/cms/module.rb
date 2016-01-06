@@ -21,10 +21,9 @@ module Cms
       base.config.autoload_paths << portlets_dir
 
       base.initializer "browsercms.enable_serving_static_assets" do |app|
-        # Remove this: Rack::Lock requires threadsafe! is off; additionally, adds
-        # ActionDispatch::Static multiple times
+        # Change to Rack::Runtime; Rack::Lock no longer is loaded by default in Rails 4
 
-        # app.middleware.insert_before ::Rack::Lock, ::ActionDispatch::Static, "#{root}/public"
+        app.middleware.insert_before ::Rack::Runtime, ::ActionDispatch::Static, "#{root}/public"
       end
 
     end
