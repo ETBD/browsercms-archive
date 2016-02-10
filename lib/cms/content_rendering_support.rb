@@ -48,30 +48,7 @@ module Cms
 
       # We must be showing the page outside of the CMS
       # So we will show the error page
-      if @page = Cms::Page.find_live_by_path(error_page_path)
-        logger.debug "Rendering Error Page: #{@page.inspect}"
-        @mode = "view"
-        @show_page_toolbar = false
-
-        # copy new instance variables to the template
-        %w[page mode show_page_toolbar].each do |v|
-          @template.instance_variable_set("@#{v}", instance_variable_get("@#{v}"))
-        end
-
-        # clear out any content already captured
-        # by previous attempts to render the page within this request
-        @template.instance_variables.select{|v| v =~ /@content_for_/ }.each do |v|
-          @template.instance_variable_set("#{v}", nil)
-        end
-
-        prepare_connectables_for_render
-
-        # The error pages are ALWAYS html since they are managed by the CMS as normal pages.
-        # So .gif or .jpg requests that throw errors will return html rather than a format warning.
-        render :layout => determine_page_layout, :template => 'cms/content/show', :status => status, :formats=>[:html]
-      else
-        handle_server_error(exception)
-      end
+      return render status: 500
     end
 
     # If any of the page's connectables (portlets, etc) are renderable, they may have a render method
