@@ -44,7 +44,11 @@ module Cms
 
       # We must be showing the page outside of the CMS
       # So we will show the error page
-      render :file => "#{Rails.root}/public/404", :layout => false, :status => status
+      if status == :not_found
+        render :file => "#{Rails.root}/public/404", :layout => false, :status => status
+      else
+        render :file => "#{Rails.root}/public/500", :layout => false, :status => status
+      end
     end
 
 
