@@ -40,16 +40,13 @@ module Cms
     def handle_error_with_cms_page(error_page_path, exception, status, options={})
 
       # If we are in the CMS, we just want to show the exception
-      if perform_caching
-        return handle_server_error(exception) if cms_site?
-      else
         return handle_server_error(exception) if current_user.able_to?(:edit_content, :publish_content)
-      end
 
       # We must be showing the page outside of the CMS
       # So we will show the error page
-      return render status: 500
+      render :file => "#{Rails.root}/public/404", :layout => false, :status => status
     end
+
 
     # If any of the page's connectables (portlets, etc) are renderable, they may have a render method
     # which does "controller" stuff, so we need to get that run before rendering the page.
