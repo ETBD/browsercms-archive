@@ -1,3 +1,6 @@
+## BROWSERCMS ARCHIVE
+#### This repo is an archive of an older version of BrowserCMS which is no longer used. It was originally forked from BrowserCMS and several modifications were made to support ETBD operations. This repo will no longer be used and will eventually be deleted.
+
 # BrowserCMS: Humane Content Management for Rails
 
 BrowserCMS is a general purpose, open source Web Content Management System (CMS) that supports Ruby on Rails v3.2. It can be used as a standalone CMS, added to existing Rails projects or extended using Rails Engines. It is designed to support three distinct groups of users:
